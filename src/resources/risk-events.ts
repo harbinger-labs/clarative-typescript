@@ -54,15 +54,9 @@ export interface RiskEventRetrieveResponse {
   review_status: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE';
 
   /**
-   * Risk level classification for a risk event.
-   *
-   * - LOW: Minimal impact.
-   * - MEDIUM: Moderate impact, may require attention.
-   * - HIGH: Significant impact, likely requires action.
-   * - CRITICAL: Severe impact, requires immediate action. It is rare to encounter
-   *   this.
+   * The finalized, user-determined risk level for the event (if set)
    */
-  risk_level: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | null;
+  risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 
   /**
    * The type of the risk event
@@ -99,7 +93,7 @@ export namespace RiskEventRetrieveResponse {
     /**
      * The AI-recommended risk level for the event
      */
-    recommended_risk_level: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+    recommended_risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
   }
 
   /**
@@ -161,15 +155,9 @@ export namespace RiskEventListResponse {
     review_status: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE';
 
     /**
-     * Risk level classification for a risk event.
-     *
-     * - LOW: Minimal impact.
-     * - MEDIUM: Moderate impact, may require attention.
-     * - HIGH: Significant impact, likely requires action.
-     * - CRITICAL: Severe impact, requires immediate action. It is rare to encounter
-     *   this.
+     * The finalized, user-determined risk level for the event (if set)
      */
-    risk_level: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | null;
+    risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 
     /**
      * The type of the risk event
@@ -201,7 +189,7 @@ export namespace RiskEventListResponse {
       /**
        * The AI-recommended risk level for the event
        */
-      recommended_risk_level: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+      recommended_risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
     }
   }
 }
@@ -210,7 +198,7 @@ export interface RiskEventListParams {
   /**
    * Filter events by minimum risk level
    */
-  risk_threshold?: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | null;
+  risk_threshold?: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | null;
 
   /**
    * A vendor's unique identifier
