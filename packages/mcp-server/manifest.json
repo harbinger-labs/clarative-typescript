@@ -9,16 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stainless-sdks/clarative-typescript.git"
+    "url": "git+https://github.com/harbinger-labs/clarative-typescript.git"
   },
-  "homepage": "https://github.com/stainless-sdks/clarative-typescript/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/harbinger-labs/clarative-typescript/tree/main/packages/mcp-server#readme",
   "documentation": "https://docs.clarative.ai/api",
   "server": {
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {
         "CLARATIVE_API_KEY": "${user_config.CLARATIVE_API_KEY}"
       }
@@ -39,5 +41,7 @@
       "node": ">=18.0.0"
     }
   },
-  "keywords": ["api"]
+  "keywords": [
+    "api"
+  ]
 }
