@@ -16,6 +16,7 @@ jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
+    environment: publishing
     permissions:
       contents: write
 
