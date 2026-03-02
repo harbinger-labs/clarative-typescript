@@ -117,85 +117,115 @@ export namespace SlaListResponse {
   }
 }
 
-export type SlaGetUptimeMetricsResponse = Array<SlaGetUptimeMetricsResponse.SlaGetUptimeMetricsResponseItem>;
+export interface SlaGetUptimeMetricsResponse {
+  /**
+   * The unique identifier of the data source
+   */
+  data_source_urn: string;
+
+  /**
+   * A non-deduplicated list of downtime events that occurred during the timeframe
+   */
+  downtime_events: Array<SlaGetUptimeMetricsResponse.DowntimeEvent>;
+
+  /**
+   * The uptime metrics for the data source during the timeframe
+   */
+  metrics: SlaGetUptimeMetricsResponse.Metrics;
+
+  /**
+   * The uptime metrics for the data source during the timeframe, with overlapping
+   * windows of downtime (such as from different incidents that occurred
+   * simultaneously) counted only once
+   */
+  metrics_deduplicated: SlaGetUptimeMetricsResponse.MetricsDeduplicated;
+
+  /**
+   * The unique identifier of the SLA
+   */
+  sla_urn: string;
+
+  /**
+   * The timeframe for which the uptime metrics are calculated
+   */
+  timeframe: SlaGetUptimeMetricsResponse.Timeframe;
+
+  /**
+   * The unique identifier of the vendor
+   */
+  vendor_urn: string;
+}
 
 export namespace SlaGetUptimeMetricsResponse {
-  export interface SlaGetUptimeMetricsResponseItem {
+  export interface DowntimeEvent {
     /**
-     * The unique identifier of the data source
+     * The duration of the downtime event in hours
      */
-    data_source_urn: string;
+    duration_hours: number;
 
     /**
-     * A list of downtime events that occurred during the timeframe
+     * The end time of the downtime event
      */
-    downtime_events: Array<SlaGetUptimeMetricsResponseItem.DowntimeEvent>;
+    end_time: string;
 
+    /**
+     * The display name of the downtime event
+     */
+    name: string;
+
+    /**
+     * The start time of the downtime event
+     */
+    start_time: string;
+  }
+
+  /**
+   * The uptime metrics for the data source during the timeframe
+   */
+  export interface Metrics {
     /**
      * The total number of downtime hours during the timeframe
      */
     downtime_hours: number;
 
     /**
-     * The unique identifier of the SLA
+     * The percentage of uptime during the timeframe
      */
-    sla_urn: string;
+    uptime_percentage: number;
+  }
 
+  /**
+   * The uptime metrics for the data source during the timeframe, with overlapping
+   * windows of downtime (such as from different incidents that occurred
+   * simultaneously) counted only once
+   */
+  export interface MetricsDeduplicated {
     /**
-     * The timeframe for which the uptime metrics are calculated
+     * The total number of downtime hours during the timeframe
      */
-    timeframe: SlaGetUptimeMetricsResponseItem.Timeframe;
+    downtime_hours: number;
 
     /**
      * The percentage of uptime during the timeframe
      */
     uptime_percentage: number;
-
-    /**
-     * The unique identifier of the vendor
-     */
-    vendor_urn: string;
   }
 
-  export namespace SlaGetUptimeMetricsResponseItem {
-    export interface DowntimeEvent {
-      /**
-       * The duration of the downtime event in hours
-       */
-      duration_hours: number;
-
-      /**
-       * The end time of the downtime event
-       */
-      end_time: string;
-
-      /**
-       * The display name of the downtime event
-       */
-      name: string;
-
-      /**
-       * The start time of the downtime event
-       */
-      start_time: string;
-    }
+  /**
+   * The timeframe for which the uptime metrics are calculated
+   */
+  export interface Timeframe {
+    /**
+     * The ISO-formatted end datetime of the timeframe for which the metrics are
+     * calculated
+     */
+    end: string;
 
     /**
-     * The timeframe for which the uptime metrics are calculated
+     * The ISO-formatted start datetime of the timeframe for which the metrics are
+     * calculated
      */
-    export interface Timeframe {
-      /**
-       * The ISO-formatted end datetime of the timeframe for which the metrics are
-       * calculated
-       */
-      end: string;
-
-      /**
-       * The ISO-formatted start datetime of the timeframe for which the metrics are
-       * calculated
-       */
-      start: string;
-    }
+    start: string;
   }
 }
 
@@ -607,13 +637,13 @@ export interface SlaGetUptimeMetricsParams {
    * Query param: Year and month landing within the last SLA evaluation period to
    * include in the result, in the format YYYY-MM
    */
-  timeframe_end?: string | null;
+  end: string;
 
   /**
    * Query param: Year and month landing within the first SLA evaluation period to
    * include in the result, in the format YYYY-MM
    */
-  timeframe_start?: string | null;
+  start: string;
 }
 
 export interface SlaListViolationsParams {
@@ -626,13 +656,13 @@ export interface SlaListViolationsParams {
    * Year and month landing within the last SLA evaluation period to include in the
    * result, in the format YYYY-MM. Defaults to the current time.
    */
-  timeframe_end?: string | null;
+  end_month?: string | null;
 
   /**
    * Year and month landing within the first SLA evaluation period to include in the
-   * result, in the format YYYY-MM. Defaults to January 2024.
+   * result, in the format YYYY-MM. Defaults to 2024-01.
    */
-  timeframe_start?: string | null;
+  start_month?: string;
 }
 
 export interface SlaRetrieveViolationParams {

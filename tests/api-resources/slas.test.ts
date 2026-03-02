@@ -34,7 +34,11 @@ describe('resource slas', () => {
 
   // Mock server tests are disabled
   test.skip('getUptimeMetrics: only required params', async () => {
-    const responsePromise = client.slas.getUptimeMetrics('data_source_urn', { sla_urn: 'sla_urn' });
+    const responsePromise = client.slas.getUptimeMetrics('data_source_urn', {
+      sla_urn: 'sla_urn',
+      end: 'end',
+      start: 'start',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -48,8 +52,8 @@ describe('resource slas', () => {
   test.skip('getUptimeMetrics: required and optional params', async () => {
     const response = await client.slas.getUptimeMetrics('data_source_urn', {
       sla_urn: 'sla_urn',
-      timeframe_end: 'timeframe_end',
-      timeframe_start: 'timeframe_start',
+      end: 'end',
+      start: 'start',
     });
   });
 
@@ -85,8 +89,8 @@ describe('resource slas', () => {
         'sla_urn',
         {
           data_source_urn: 'data_source_urn',
-          timeframe_end: 'timeframe_end',
-          timeframe_start: 'timeframe_start',
+          end_month: 'end_month',
+          start_month: 'start_month',
         },
         { path: '/_stainless_unknown_path' },
       ),
