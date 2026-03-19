@@ -41,6 +41,35 @@ export interface VendorRetrieveResponse {
    * A unique identifier for the vendor
    */
   urn: string;
+
+  /**
+   * A list of custom metadata fields associated with the vendor
+   */
+  metadata?: Array<VendorRetrieveResponse.Metadata>;
+}
+
+export namespace VendorRetrieveResponse {
+  export interface Metadata {
+    /**
+     * The name of the metadata field
+     */
+    name: string;
+
+    /**
+     * The type of the metadata field
+     */
+    type: 'TEXT' | 'SELECT' | 'MULTI_SELECT';
+
+    /**
+     * A unique identifier for the metadata field
+     */
+    urn: string;
+
+    /**
+     * The value of the metadata field
+     */
+    value?: unknown;
+  }
 }
 
 export type VendorListResponse = Array<VendorListResponse.VendorListResponseItem>;
