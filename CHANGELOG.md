@@ -6,7 +6,7 @@ Full Changelog: [v0.0.1...v0.0.5](https://github.com/harbinger-labs/clarative-ty
 
 ### Features
 
-* [Jacob/HARB-4471] Developer API: Uptime Metrics Endpoint ([b849d15](https://github.com/harbinger-labs/clarative-typescript/commit/b849d15070cb868c8212ef5ec103edee678ebf15))
+* Developer API: Uptime Metrics Endpoint ([b849d15](https://github.com/harbinger-labs/clarative-typescript/commit/b849d15070cb868c8212ef5ec103edee678ebf15))
 * Custom Vendor Metadata Fields ([9a7c142](https://github.com/harbinger-labs/clarative-typescript/commit/9a7c142cd677d649d16ee57039f3be4c320480b6))
 
 
