@@ -20,7 +20,7 @@ export const newMcpServer = async (stainlessApiKey: string | undefined) =>
   new McpServer(
     {
       name: 'clarative_api',
-      version: '0.0.1',
+      version: '0.0.5',
     },
     {
       instructions: await getInstructions(stainlessApiKey),
