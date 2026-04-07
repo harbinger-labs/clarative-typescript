@@ -1,6 +1,6 @@
 {
   "name": "clarative",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "The official TypeScript library for the Clarative API",
   "author": "Clarative <support@clarative.ai>",
   "types": "dist/index.d.ts",
