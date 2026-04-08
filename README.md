@@ -20,8 +20,11 @@ Use the Clarative MCP Server to enable AI assistants to interact with this API, 
 ## Installation
 
 ```sh
-npm install clarative
+npm install git+ssh://git@github.com:harbinger-labs/clarative-typescript.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install clarative`
 
 ## Usage
 

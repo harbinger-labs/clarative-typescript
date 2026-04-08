@@ -16,8 +16,11 @@ export class Vendors extends APIResource {
   /**
    * List all vendors, sorted by name alphabetically (case-insensitive)
    */
-  list(options?: RequestOptions): APIPromise<VendorListResponse> {
-    return this._client.get('/v1/vendors', options);
+  list(
+    query: VendorListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<VendorListResponse> {
+    return this._client.get('/v1/vendors', { query, ...options });
   }
 }
 
@@ -31,6 +34,11 @@ export interface VendorRetrieveResponse {
    * The vendor's description
    */
   description: string | null;
+
+  /**
+   * The vendor's current lifecycle stage
+   */
+  lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED';
 
   /**
    * The vendor's display name
@@ -98,9 +106,17 @@ export namespace VendorListResponse {
   }
 }
 
+export interface VendorListParams {
+  /**
+   * Filter vendors by lifecycle stage
+   */
+  lifecycle_stage?: 'INITIAL_ASSESSMENT' | 'ONBOARDED' | null;
+}
+
 export declare namespace Vendors {
   export {
     type VendorRetrieveResponse as VendorRetrieveResponse,
     type VendorListResponse as VendorListResponse,
+    type VendorListParams as VendorListParams,
   };
 }

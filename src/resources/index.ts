@@ -14,8 +14,14 @@ export {
   type SlaListDataSourcesResponse,
   type SlaListViolationsResponse,
   type SlaRetrieveViolationResponse,
+  type SlaListParams,
   type SlaGetUptimeMetricsParams,
   type SlaListViolationsParams,
   type SlaRetrieveViolationParams,
 } from './slas';
-export { Vendors, type VendorRetrieveResponse, type VendorListResponse } from './vendors';
+export {
+  Vendors,
+  type VendorRetrieveResponse,
+  type VendorListResponse,
+  type VendorListParams,
+} from './vendors';

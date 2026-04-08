@@ -14,7 +14,7 @@ export class RiskEvents extends APIResource {
   }
 
   /**
-   * List all risk events with optional filters, sorted by recency (oldest first)
+   * List all risk events with optional filters, sorted by most recent first
    */
   list(
     query: RiskEventListParams | null | undefined = {},
@@ -77,6 +77,11 @@ export interface RiskEventRetrieveResponse {
    * Details about the vendor associated with this risk event.
    */
   vendor: RiskEventRetrieveResponse.Vendor;
+
+  /**
+   * Tags indicating the nature of the risk event.
+   */
+  category_tags?: Array<string> | null;
 }
 
 export namespace RiskEventRetrieveResponse {
@@ -195,6 +200,21 @@ export namespace RiskEventListResponse {
 }
 
 export interface RiskEventListParams {
+  /**
+   * Filter events created on or after this ISO-8601 timestamp
+   */
+  created_after?: string | null;
+
+  /**
+   * Filter events created before this ISO-8601 timestamp
+   */
+  created_before?: string | null;
+
+  /**
+   * Filter events by review status (PENDING, VERIFYING, APPLICABLE, NOT_APPLICABLE)
+   */
+  review_statuses?: Array<'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'> | null;
+
   /**
    * Filter events by minimum risk level
    */

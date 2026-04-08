@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0 (2026-04-08)
+
+Full Changelog: [v0.0.5...v0.1.0](https://github.com/harbinger-labs/clarative-typescript/compare/v0.0.5...v0.1.0)
+
+### Features
+
+* Risk event endpoint enhancements ([a9ef1f6](https://github.com/harbinger-labs/clarative-typescript/commit/a9ef1f669b2725e885c437cc56c1350d176f61ed))
+* Vendor endpoint enhancements + SLA filter ([1f7dd90](https://github.com/harbinger-labs/clarative-typescript/commit/1f7dd90f06345b263c34353b511a8b16a8d01c1b))
+
+
+### Chores
+
+* **ci:** escape input path in publish-npm workflow ([84499b3](https://github.com/harbinger-labs/clarative-typescript/commit/84499b36eeafe9738531514bfe851a4921286c6c))
+* **ci:** skip lint on metadata-only changes ([4d9887e](https://github.com/harbinger-labs/clarative-typescript/commit/4d9887e54be7778d33aa850afee219dcb7fe83e1))
+* **internal:** fix MCP server import ordering ([71c5a0d](https://github.com/harbinger-labs/clarative-typescript/commit/71c5a0dab319026f4fb7a15d5bf8e544fc8d3bf2))
+* **internal:** fix MCP server TS errors that occur with required client options ([034efd5](https://github.com/harbinger-labs/clarative-typescript/commit/034efd5ebe1c23b560755c4d16205fa3c51f6b0c))
+* **internal:** improve local docs search for MCP servers ([8c5eb23](https://github.com/harbinger-labs/clarative-typescript/commit/8c5eb23ef6dd5fe440d34db5e3ea3f5e52a1faa7))
+* **internal:** improve local docs search for MCP servers ([c6e9384](https://github.com/harbinger-labs/clarative-typescript/commit/c6e9384bb36bafa1d0d4f2d3546aecb63d089213))
+* **internal:** support custom-instructions-path flag in MCP servers ([2ac4b80](https://github.com/harbinger-labs/clarative-typescript/commit/2ac4b80a710910075d0f4e3e964979a50c1c702e))
+* **internal:** support local docs search in MCP servers ([403420c](https://github.com/harbinger-labs/clarative-typescript/commit/403420c8a8d5d69dbfd4226c6e42a7bfd382325a))
+* **internal:** support type annotations when running MCP in local execution mode ([9060cd2](https://github.com/harbinger-labs/clarative-typescript/commit/9060cd25c07a48c37c9b12140db76fb5730a7249))
+* **internal:** update gitignore ([11e4a62](https://github.com/harbinger-labs/clarative-typescript/commit/11e4a62f1e9a1a324447b98bcf1947f90e28b504))
+* **mcp-server:** add support for session id, forward client info ([6475d35](https://github.com/harbinger-labs/clarative-typescript/commit/6475d35f4c981056636baad78bd6625596bdbd9a))
+* **mcp-server:** log client info ([9071c41](https://github.com/harbinger-labs/clarative-typescript/commit/9071c41dc256a3b938fc1be830c694db047c83ac))
+* update SDK settings ([204f406](https://github.com/harbinger-labs/clarative-typescript/commit/204f4067a3994f6b80a0ead7a172a74208cb1302))
+
 ## 0.0.5 (2026-03-19)
 
 Full Changelog: [v0.0.1...v0.0.5](https://github.com/harbinger-labs/clarative-typescript/compare/v0.0.1...v0.0.5)

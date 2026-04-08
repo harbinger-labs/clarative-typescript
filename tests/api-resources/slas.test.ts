@@ -33,11 +33,19 @@ describe('resource slas', () => {
   });
 
   // Mock server tests are disabled
+  test.skip('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.slas.list({ vendor_urn: 'vendor_urn' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Clarative.NotFoundError);
+  });
+
+  // Mock server tests are disabled
   test.skip('getUptimeMetrics: only required params', async () => {
     const responsePromise = client.slas.getUptimeMetrics('data_source_urn', {
       sla_urn: 'sla_urn',
-      end: 'end',
-      start: 'start',
+      end: '2019-12-27T18:11:19.117Z',
+      start: '2019-12-27T18:11:19.117Z',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -52,8 +60,8 @@ describe('resource slas', () => {
   test.skip('getUptimeMetrics: required and optional params', async () => {
     const response = await client.slas.getUptimeMetrics('data_source_urn', {
       sla_urn: 'sla_urn',
-      end: 'end',
-      start: 'start',
+      end: '2019-12-27T18:11:19.117Z',
+      start: '2019-12-27T18:11:19.117Z',
     });
   });
 

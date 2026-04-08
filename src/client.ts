@@ -27,6 +27,7 @@ import {
   SlaGetUptimeMetricsParams,
   SlaGetUptimeMetricsResponse,
   SlaListDataSourcesResponse,
+  SlaListParams,
   SlaListResponse,
   SlaListViolationsParams,
   SlaListViolationsResponse,
@@ -35,7 +36,7 @@ import {
   SlaRetrieveViolationResponse,
   Slas,
 } from './resources/slas';
-import { VendorListResponse, VendorRetrieveResponse, Vendors } from './resources/vendors';
+import { VendorListParams, VendorListResponse, VendorRetrieveResponse, Vendors } from './resources/vendors';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -229,9 +230,6 @@ export class Clarative {
     return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
   }
 
-  /**
-   * Basic re-implementation of `qs.stringify` for primitive types.
-   */
   protected stringifyQuery(query: object | Record<string, unknown>): string {
     return stringifyQuery(query);
   }
@@ -763,6 +761,7 @@ export declare namespace Clarative {
     type SlaListDataSourcesResponse as SlaListDataSourcesResponse,
     type SlaListViolationsResponse as SlaListViolationsResponse,
     type SlaRetrieveViolationResponse as SlaRetrieveViolationResponse,
+    type SlaListParams as SlaListParams,
     type SlaGetUptimeMetricsParams as SlaGetUptimeMetricsParams,
     type SlaListViolationsParams as SlaListViolationsParams,
     type SlaRetrieveViolationParams as SlaRetrieveViolationParams,
@@ -772,5 +771,6 @@ export declare namespace Clarative {
     Vendors as Vendors,
     type VendorRetrieveResponse as VendorRetrieveResponse,
     type VendorListResponse as VendorListResponse,
+    type VendorListParams as VendorListParams,
   };
 }
