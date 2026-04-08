@@ -16,8 +16,8 @@ export class Slas extends APIResource {
   /**
    * List all SLAs, sorted by name alphabetically (case-insensitive)
    */
-  list(options?: RequestOptions): APIPromise<SlaListResponse> {
-    return this._client.get('/v1/slas', options);
+  list(query: SlaListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SlaListResponse> {
+    return this._client.get('/v1/slas', { query, ...options });
   }
 
   /**
@@ -627,6 +627,13 @@ export namespace SlaRetrieveViolationResponse {
   }
 }
 
+export interface SlaListParams {
+  /**
+   * A vendor's unique identifier
+   */
+  vendor_urn?: string | null;
+}
+
 export interface SlaGetUptimeMetricsParams {
   /**
    * Path param
@@ -634,14 +641,14 @@ export interface SlaGetUptimeMetricsParams {
   sla_urn: string;
 
   /**
-   * Query param: Year and month landing within the last SLA evaluation period to
-   * include in the result, in the format YYYY-MM
+   * Query param: ISO-formatted datetime for the end of the evaluation period (e.g.
+   * 2024-01-31, 2024-01-31T23:59:59Z)
    */
   end: string;
 
   /**
-   * Query param: Year and month landing within the first SLA evaluation period to
-   * include in the result, in the format YYYY-MM
+   * Query param: ISO-formatted datetime for the start of the evaluation period (e.g.
+   * 2024-01-01, 2024-01-15T08:00:00Z)
    */
   start: string;
 }
@@ -677,6 +684,7 @@ export declare namespace Slas {
     type SlaListDataSourcesResponse as SlaListDataSourcesResponse,
     type SlaListViolationsResponse as SlaListViolationsResponse,
     type SlaRetrieveViolationResponse as SlaRetrieveViolationResponse,
+    type SlaListParams as SlaListParams,
     type SlaGetUptimeMetricsParams as SlaGetUptimeMetricsParams,
     type SlaListViolationsParams as SlaListViolationsParams,
     type SlaRetrieveViolationParams as SlaRetrieveViolationParams,

@@ -24,7 +24,7 @@ Types:
 Methods:
 
 - <code title="get /v1/slas/{urn}">client.slas.<a href="./src/resources/slas.ts">retrieve</a>(urn) -> SlaRetrieveResponse</code>
-- <code title="get /v1/slas">client.slas.<a href="./src/resources/slas.ts">list</a>() -> SlaListResponse</code>
+- <code title="get /v1/slas">client.slas.<a href="./src/resources/slas.ts">list</a>({ ...params }) -> SlaListResponse</code>
 - <code title="get /v1/slas/{sla_urn}/data-sources/{data_source_urn}/uptime-metrics">client.slas.<a href="./src/resources/slas.ts">getUptimeMetrics</a>(dataSourceUrn, { ...params }) -> SlaGetUptimeMetricsResponse</code>
 - <code title="get /v1/slas/{sla_urn}/data-sources">client.slas.<a href="./src/resources/slas.ts">listDataSources</a>(slaUrn) -> SlaListDataSourcesResponse</code>
 - <code title="get /v1/slas/{sla_urn}/violations">client.slas.<a href="./src/resources/slas.ts">listViolations</a>(slaUrn, { ...params }) -> SlaListViolationsResponse</code>
@@ -40,4 +40,4 @@ Types:
 Methods:
 
 - <code title="get /v1/vendors/{urn}">client.vendors.<a href="./src/resources/vendors.ts">retrieve</a>(urn) -> VendorRetrieveResponse</code>
-- <code title="get /v1/vendors">client.vendors.<a href="./src/resources/vendors.ts">list</a>() -> VendorListResponse</code>
+- <code title="get /v1/vendors">client.vendors.<a href="./src/resources/vendors.ts">list</a>({ ...params }) -> VendorListResponse</code>
