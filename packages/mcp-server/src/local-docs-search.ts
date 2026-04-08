@@ -188,9 +188,10 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     description: 'List all SLAs, sorted by name alphabetically (case-insensitive)',
     stainlessPath: '(resource) slas > (method) list',
     qualified: 'client.slas.list',
+    params: ['vendor_urn?: string;'],
     response: '{ description: string; name: string; urn: string; vendor_urn: string; }[]',
     markdown:
-      "## list\n\n`client.slas.list(): { description: string; name: string; urn: string; vendor_urn: string; }[]`\n\n**get** `/v1/slas`\n\nList all SLAs, sorted by name alphabetically (case-insensitive)\n\n### Returns\n\n- `{ description: string; name: string; urn: string; vendor_urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst slas = await client.slas.list();\n\nconsole.log(slas);\n```",
+      "## list\n\n`client.slas.list(vendor_urn?: string): { description: string; name: string; urn: string; vendor_urn: string; }[]`\n\n**get** `/v1/slas`\n\nList all SLAs, sorted by name alphabetically (case-insensitive)\n\n### Parameters\n\n- `vendor_urn?: string`\n  A vendor's unique identifier\n\n### Returns\n\n- `{ description: string; name: string; urn: string; vendor_urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst slas = await client.slas.list();\n\nconsole.log(slas);\n```",
     perLanguage: {
       http: {
         example:
@@ -279,7 +280,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     response:
       '{ data_source_urn: string; downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]; metrics: { downtime_hours: number; uptime_percentage: number; }; metrics_deduplicated: { downtime_hours: number; uptime_percentage: number; }; sla_urn: string; timeframe: { end: string; start: string; }; vendor_urn: string; }',
     markdown:
-      "## get_uptime_metrics\n\n`client.slas.getUptimeMetrics(sla_urn: string, data_source_urn: string, end: string, start: string): { data_source_urn: string; downtime_events: object[]; metrics: object; metrics_deduplicated: object; sla_urn: string; timeframe: object; vendor_urn: string; }`\n\n**get** `/v1/slas/{sla_urn}/data-sources/{data_source_urn}/uptime-metrics`\n\nGet uptime metrics for an SLA data source\n\n### Parameters\n\n- `sla_urn: string`\n\n- `data_source_urn: string`\n\n- `end: string`\n  Year and month landing within the last SLA evaluation period to include in the result, in the format YYYY-MM\n\n- `start: string`\n  Year and month landing within the first SLA evaluation period to include in the result, in the format YYYY-MM\n\n### Returns\n\n- `{ data_source_urn: string; downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]; metrics: { downtime_hours: number; uptime_percentage: number; }; metrics_deduplicated: { downtime_hours: number; uptime_percentage: number; }; sla_urn: string; timeframe: { end: string; start: string; }; vendor_urn: string; }`\n\n  - `data_source_urn: string`\n  - `downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]`\n  - `metrics: { downtime_hours: number; uptime_percentage: number; }`\n  - `metrics_deduplicated: { downtime_hours: number; uptime_percentage: number; }`\n  - `sla_urn: string`\n  - `timeframe: { end: string; start: string; }`\n  - `vendor_urn: string`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst response = await client.slas.getUptimeMetrics('data_source_urn', {\n  sla_urn: 'sla_urn',\n  end: 'end',\n  start: 'start',\n});\n\nconsole.log(response);\n```",
+      "## get_uptime_metrics\n\n`client.slas.getUptimeMetrics(sla_urn: string, data_source_urn: string, end: string, start: string): { data_source_urn: string; downtime_events: object[]; metrics: object; metrics_deduplicated: object; sla_urn: string; timeframe: object; vendor_urn: string; }`\n\n**get** `/v1/slas/{sla_urn}/data-sources/{data_source_urn}/uptime-metrics`\n\nGet uptime metrics for an SLA data source\n\n### Parameters\n\n- `sla_urn: string`\n\n- `data_source_urn: string`\n\n- `end: string`\n  ISO-formatted datetime for the end of the evaluation period (e.g. 2024-01-31, 2024-01-31T23:59:59Z)\n\n- `start: string`\n  ISO-formatted datetime for the start of the evaluation period (e.g. 2024-01-01, 2024-01-15T08:00:00Z)\n\n### Returns\n\n- `{ data_source_urn: string; downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]; metrics: { downtime_hours: number; uptime_percentage: number; }; metrics_deduplicated: { downtime_hours: number; uptime_percentage: number; }; sla_urn: string; timeframe: { end: string; start: string; }; vendor_urn: string; }`\n\n  - `data_source_urn: string`\n  - `downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]`\n  - `metrics: { downtime_hours: number; uptime_percentage: number; }`\n  - `metrics_deduplicated: { downtime_hours: number; uptime_percentage: number; }`\n  - `sla_urn: string`\n  - `timeframe: { end: string; start: string; }`\n  - `vendor_urn: string`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst response = await client.slas.getUptimeMetrics('data_source_urn', {\n  sla_urn: 'sla_urn',\n  end: '2019-12-27T18:11:19.117Z',\n  start: '2019-12-27T18:11:19.117Z',\n});\n\nconsole.log(response);\n```",
     perLanguage: {
       http: {
         example:
@@ -288,12 +289,12 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       python: {
         method: 'slas.get_uptime_metrics',
         example:
-          'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nresponse = client.slas.get_uptime_metrics(\n    data_source_urn="data_source_urn",\n    sla_urn="sla_urn",\n    end="end",\n    start="start",\n)\nprint(response.data_source_urn)',
+          'import os\nfrom datetime import datetime\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nresponse = client.slas.get_uptime_metrics(\n    data_source_urn="data_source_urn",\n    sla_urn="sla_urn",\n    end=datetime.fromisoformat("2019-12-27T18:11:19.117"),\n    start=datetime.fromisoformat("2019-12-27T18:11:19.117"),\n)\nprint(response.data_source_urn)',
       },
       typescript: {
         method: 'client.slas.getUptimeMetrics',
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.getUptimeMetrics('data_source_urn', {\n  sla_urn: 'sla_urn',\n  end: 'end',\n  start: 'start',\n});\n\nconsole.log(response.data_source_urn);",
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.getUptimeMetrics('data_source_urn', {\n  sla_urn: 'sla_urn',\n  end: '2019-12-27T18:11:19.117Z',\n  start: '2019-12-27T18:11:19.117Z',\n});\n\nconsole.log(response.data_source_urn);",
       },
     },
   },
@@ -305,9 +306,10 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     description: 'List all vendors, sorted by name alphabetically (case-insensitive)',
     stainlessPath: '(resource) vendors > (method) list',
     qualified: 'client.vendors.list',
+    params: ["lifecycle_stage?: 'INITIAL_ASSESSMENT' | 'ONBOARDED';"],
     response: '{ created_at: string; description: string; name: string; urn: string; }[]',
     markdown:
-      "## list\n\n`client.vendors.list(): { created_at: string; description: string; name: string; urn: string; }[]`\n\n**get** `/v1/vendors`\n\nList all vendors, sorted by name alphabetically (case-insensitive)\n\n### Returns\n\n- `{ created_at: string; description: string; name: string; urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst vendors = await client.vendors.list();\n\nconsole.log(vendors);\n```",
+      "## list\n\n`client.vendors.list(lifecycle_stage?: 'INITIAL_ASSESSMENT' | 'ONBOARDED'): { created_at: string; description: string; name: string; urn: string; }[]`\n\n**get** `/v1/vendors`\n\nList all vendors, sorted by name alphabetically (case-insensitive)\n\n### Parameters\n\n- `lifecycle_stage?: 'INITIAL_ASSESSMENT' | 'ONBOARDED'`\n  Filter vendors by lifecycle stage\n\n### Returns\n\n- `{ created_at: string; description: string; name: string; urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst vendors = await client.vendors.list();\n\nconsole.log(vendors);\n```",
     perLanguage: {
       http: {
         example:
@@ -335,9 +337,9 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     qualified: 'client.vendors.retrieve',
     params: ['urn: string;'],
     response:
-      "{ created_at: string; description: string; name: string; urn: string; metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]; }",
+      "{ created_at: string; description: string; lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED'; name: string; urn: string; metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]; }",
     markdown:
-      "## retrieve\n\n`client.vendors.retrieve(urn: string): { created_at: string; description: string; name: string; urn: string; metadata?: object[]; }`\n\n**get** `/v1/vendors/{urn}`\n\nFetch in-depth information about a single vendor\n\n### Parameters\n\n- `urn: string`\n\n### Returns\n\n- `{ created_at: string; description: string; name: string; urn: string; metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]; }`\n\n  - `created_at: string`\n  - `description: string`\n  - `name: string`\n  - `urn: string`\n  - `metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst vendor = await client.vendors.retrieve('urn');\n\nconsole.log(vendor);\n```",
+      "## retrieve\n\n`client.vendors.retrieve(urn: string): { created_at: string; description: string; lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED'; name: string; urn: string; metadata?: object[]; }`\n\n**get** `/v1/vendors/{urn}`\n\nFetch in-depth information about a single vendor\n\n### Parameters\n\n- `urn: string`\n\n### Returns\n\n- `{ created_at: string; description: string; lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED'; name: string; urn: string; metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]; }`\n\n  - `created_at: string`\n  - `description: string`\n  - `lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED'`\n  - `name: string`\n  - `urn: string`\n  - `metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst vendor = await client.vendors.retrieve('urn');\n\nconsole.log(vendor);\n```",
     perLanguage: {
       http: {
         example:
