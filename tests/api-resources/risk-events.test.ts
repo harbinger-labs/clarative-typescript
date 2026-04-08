@@ -37,7 +37,13 @@ describe('resource riskEvents', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.riskEvents.list(
-        { risk_threshold: 'UNASSIGNED', vendor_urn: 'vendor_urn' },
+        {
+          created_after: '2019-12-27T18:11:19.117Z',
+          created_before: '2019-12-27T18:11:19.117Z',
+          review_statuses: ['PENDING'],
+          risk_threshold: 'UNASSIGNED',
+          vendor_urn: 'vendor_urn',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Clarative.NotFoundError);
