@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harbinger-labs/clarative-typescript.git"
+    "url": "git+https://github.com/stainless-sdks/clarative-typescript.git"
   },
-  "homepage": "https://github.com/harbinger-labs/clarative-typescript/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/stainless-sdks/clarative-typescript/tree/main/packages/mcp-server#readme",
   "documentation": "https://docs.clarative.ai/api",
   "server": {
     "type": "node",
