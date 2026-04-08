@@ -20,7 +20,7 @@ Use the Clarative MCP Server to enable AI assistants to interact with this API, 
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/clarative-typescript.git
+npm install git+ssh://git@github.com:harbinger-labs/clarative-typescript.git
 ```
 
 > [!NOTE]
@@ -342,7 +342,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/clarative-typescript/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/harbinger-labs/clarative-typescript/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
