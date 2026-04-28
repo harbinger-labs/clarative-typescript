@@ -70,19 +70,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.riskEvents.list(created_after?: string, created_before?: string, review_statuses?: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'[], risk_threshold?: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL', vendor_urn?: string): { ai_risk_level_recommendation: object; created_at: string; description: string; name: string; review_status: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'; risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'; source_type: 'STATUS_PAGE' | 'MONITOR' | 'NEWS' | 'SEC_FILING'; url: string; urn: string; }[]`\n\n**get** `/v1/risk-events`\n\nList all risk events with optional filters, sorted by most recent first\n\n### Parameters\n\n- `created_after?: string`\n  Filter events created on or after this ISO-8601 timestamp\n\n- `created_before?: string`\n  Filter events created before this ISO-8601 timestamp\n\n- `review_statuses?: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'[]`\n  Filter events by review status (PENDING, VERIFYING, APPLICABLE, NOT_APPLICABLE)\n\n- `risk_threshold?: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'`\n  Filter events by minimum risk level\n\n- `vendor_urn?: string`\n  A vendor's unique identifier\n\n### Returns\n\n- `{ ai_risk_level_recommendation: { explanation: string; recommended_risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'; }; created_at: string; description: string; name: string; review_status: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'; risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'; source_type: 'STATUS_PAGE' | 'MONITOR' | 'NEWS' | 'SEC_FILING'; url: string; urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst riskEvents = await client.riskEvents.list();\n\nconsole.log(riskEvents);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.riskEvents.list',
         example:
-          'curl https://developer.clarative.ai/v1/risk-events \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst riskEvents = await client.riskEvents.list();\n\nconsole.log(riskEvents);",
       },
       python: {
         method: 'risk_events.list',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nrisk_events = client.risk_events.list()\nprint(risk_events)',
       },
-      typescript: {
-        method: 'client.riskEvents.list',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst riskEvents = await client.riskEvents.list();\n\nconsole.log(riskEvents);",
+          'curl https://developer.clarative.ai/v1/risk-events \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -100,19 +100,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.riskEvents.retrieve(urn: string): { ai_risk_level_recommendation: object; created_at: string; description: string; name: string; review_status: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'; risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'; source_type: 'STATUS_PAGE' | 'MONITOR' | 'NEWS' | 'SEC_FILING'; url: string; urn: string; vendor: object; category_tags?: string[]; }`\n\n**get** `/v1/risk-events/{urn}`\n\nFetch in-depth information about a single risk event\n\n### Parameters\n\n- `urn: string`\n\n### Returns\n\n- `{ ai_risk_level_recommendation: { explanation: string; recommended_risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'; }; created_at: string; description: string; name: string; review_status: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'; risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'; source_type: 'STATUS_PAGE' | 'MONITOR' | 'NEWS' | 'SEC_FILING'; url: string; urn: string; vendor: { created_at: string; description: string; name: string; urn: string; }; category_tags?: string[]; }`\n\n  - `ai_risk_level_recommendation: { explanation: string; recommended_risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'; }`\n  - `created_at: string`\n  - `description: string`\n  - `name: string`\n  - `review_status: 'PENDING' | 'VERIFYING' | 'APPLICABLE' | 'NOT_APPLICABLE'`\n  - `risk_level: 'UNASSIGNED' | 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'`\n  - `source_type: 'STATUS_PAGE' | 'MONITOR' | 'NEWS' | 'SEC_FILING'`\n  - `url: string`\n  - `urn: string`\n  - `vendor: { created_at: string; description: string; name: string; urn: string; }`\n  - `category_tags?: string[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst riskEvent = await client.riskEvents.retrieve('urn');\n\nconsole.log(riskEvent);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.riskEvents.retrieve',
         example:
-          'curl https://developer.clarative.ai/v1/risk-events/$URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst riskEvent = await client.riskEvents.retrieve('urn');\n\nconsole.log(riskEvent.ai_risk_level_recommendation);",
       },
       python: {
         method: 'risk_events.retrieve',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nrisk_event = client.risk_events.retrieve(\n    "urn",\n)\nprint(risk_event.ai_risk_level_recommendation)',
       },
-      typescript: {
-        method: 'client.riskEvents.retrieve',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst riskEvent = await client.riskEvents.retrieve('urn');\n\nconsole.log(riskEvent.ai_risk_level_recommendation);",
+          'curl https://developer.clarative.ai/v1/risk-events/$URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -132,19 +132,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list_data_sources\n\n`client.slas.listDataSources(sla_urn: string): { monitor_data_sources: object[]; sla_urn: string; status_page_data_source: object; vendor_urn: string; }`\n\n**get** `/v1/slas/{sla_urn}/data-sources`\n\nList all data sources for an SLA. There is never more than one status page source, and the monitor data sources are sorted alphabetically by name (case-insensitive).\n\n### Parameters\n\n- `sla_urn: string`\n\n### Returns\n\n- `{ monitor_data_sources: { description: string; name: string; urn: string; data_source_type?: 'MONITOR'; }[]; sla_urn: string; status_page_data_source: { excluded_product_tags: string[]; included_product_tags: string[]; urn: string; data_source_type?: 'STATUS_PAGE'; }; vendor_urn: string; }`\n\n  - `monitor_data_sources: { description: string; name: string; urn: string; data_source_type?: 'MONITOR'; }[]`\n  - `sla_urn: string`\n  - `status_page_data_source: { excluded_product_tags: string[]; included_product_tags: string[]; urn: string; data_source_type?: 'STATUS_PAGE'; }`\n  - `vendor_urn: string`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst response = await client.slas.listDataSources('sla_urn');\n\nconsole.log(response);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.slas.listDataSources',
         example:
-          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/data-sources \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.listDataSources('sla_urn');\n\nconsole.log(response.monitor_data_sources);",
       },
       python: {
         method: 'slas.list_data_sources',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nresponse = client.slas.list_data_sources(\n    "sla_urn",\n)\nprint(response.monitor_data_sources)',
       },
-      typescript: {
-        method: 'client.slas.listDataSources',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.listDataSources('sla_urn');\n\nconsole.log(response.monitor_data_sources);",
+          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/data-sources \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -164,19 +164,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list_violations\n\n`client.slas.listViolations(sla_urn: string, data_source_urn?: string, end_month?: string, start_month?: string): { allowable_downtime_hours: number; data_source_type: 'STATUS_PAGE' | 'MONITOR'; data_source_urn: string; downtime_hours: number; evaluation_period: object; uptime_percentage: number; urn: string; }[]`\n\n**get** `/v1/slas/{sla_urn}/violations`\n\nList all violations for an SLA, sorted first by timestamp (oldest first) and second by total downtime (longest first).\n\n### Parameters\n\n- `sla_urn: string`\n\n- `data_source_urn?: string`\n  An SLA data source's unique identifier\n\n- `end_month?: string`\n  Year and month landing within the last SLA evaluation period to include in the result, in the format YYYY-MM. Defaults to the current time.\n\n- `start_month?: string`\n  Year and month landing within the first SLA evaluation period to include in the result, in the format YYYY-MM. Defaults to 2024-01.\n\n### Returns\n\n- `{ allowable_downtime_hours: number; data_source_type: 'STATUS_PAGE' | 'MONITOR'; data_source_urn: string; downtime_hours: number; evaluation_period: { end_month: { month: number; year: number; }; start_month: { month: number; year: number; }; }; uptime_percentage: number; urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst response = await client.slas.listViolations('sla_urn');\n\nconsole.log(response);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.slas.listViolations',
         example:
-          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/violations \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.listViolations('sla_urn');\n\nconsole.log(response);",
       },
       python: {
         method: 'slas.list_violations',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nresponse = client.slas.list_violations(\n    sla_urn="sla_urn",\n)\nprint(response)',
       },
-      typescript: {
-        method: 'client.slas.listViolations',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.listViolations('sla_urn');\n\nconsole.log(response);",
+          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/violations \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -193,19 +193,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.slas.list(vendor_urn?: string): { description: string; name: string; urn: string; vendor_urn: string; }[]`\n\n**get** `/v1/slas`\n\nList all SLAs, sorted by name alphabetically (case-insensitive)\n\n### Parameters\n\n- `vendor_urn?: string`\n  A vendor's unique identifier\n\n### Returns\n\n- `{ description: string; name: string; urn: string; vendor_urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst slas = await client.slas.list();\n\nconsole.log(slas);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.slas.list',
         example:
-          'curl https://developer.clarative.ai/v1/slas \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst slas = await client.slas.list();\n\nconsole.log(slas);",
       },
       python: {
         method: 'slas.list',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nslas = client.slas.list()\nprint(slas)',
       },
-      typescript: {
-        method: 'client.slas.list',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst slas = await client.slas.list();\n\nconsole.log(slas);",
+          'curl https://developer.clarative.ai/v1/slas \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -223,19 +223,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve_violation\n\n`client.slas.retrieveViolation(sla_urn: string, violation_urn: string): { allowable_downtime_hours: number; data_source: object | object; data_source_type: 'STATUS_PAGE' | 'MONITOR'; data_source_urn: string; downtime_events: object[]; downtime_hours: number; evaluation_period: object; sla: object; uptime_percentage: number; urn: string; vendor: object; }`\n\n**get** `/v1/slas/{sla_urn}/violations/{violation_urn}`\n\nGet details on a specific SLA violation\n\n### Parameters\n\n- `sla_urn: string`\n\n- `violation_urn: string`\n\n### Returns\n\n- `{ allowable_downtime_hours: number; data_source: { excluded_product_tags: string[]; included_product_tags: string[]; urn: string; data_source_type?: 'STATUS_PAGE'; } | { description: string; name: string; urn: string; data_source_type?: 'MONITOR'; }; data_source_type: 'STATUS_PAGE' | 'MONITOR'; data_source_urn: string; downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]; downtime_hours: number; evaluation_period: { end_month: { month: number; year: number; }; start_month: { month: number; year: number; }; }; sla: { description: string; name: string; urn: string; vendor_urn: string; }; uptime_percentage: number; urn: string; vendor: { created_at: string; description: string; name: string; urn: string; }; }`\n\n  - `allowable_downtime_hours: number`\n  - `data_source: { excluded_product_tags: string[]; included_product_tags: string[]; urn: string; data_source_type?: 'STATUS_PAGE'; } | { description: string; name: string; urn: string; data_source_type?: 'MONITOR'; }`\n  - `data_source_type: 'STATUS_PAGE' | 'MONITOR'`\n  - `data_source_urn: string`\n  - `downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]`\n  - `downtime_hours: number`\n  - `evaluation_period: { end_month: { month: number; year: number; }; start_month: { month: number; year: number; }; }`\n  - `sla: { description: string; name: string; urn: string; vendor_urn: string; }`\n  - `uptime_percentage: number`\n  - `urn: string`\n  - `vendor: { created_at: string; description: string; name: string; urn: string; }`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst response = await client.slas.retrieveViolation('violation_urn', { sla_urn: 'sla_urn' });\n\nconsole.log(response);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.slas.retrieveViolation',
         example:
-          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/violations/$VIOLATION_URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.retrieveViolation('violation_urn', { sla_urn: 'sla_urn' });\n\nconsole.log(response.allowable_downtime_hours);",
       },
       python: {
         method: 'slas.retrieve_violation',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nresponse = client.slas.retrieve_violation(\n    violation_urn="violation_urn",\n    sla_urn="sla_urn",\n)\nprint(response.allowable_downtime_hours)',
       },
-      typescript: {
-        method: 'client.slas.retrieveViolation',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.retrieveViolation('violation_urn', { sla_urn: 'sla_urn' });\n\nconsole.log(response.allowable_downtime_hours);",
+          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/violations/$VIOLATION_URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -252,19 +252,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.slas.retrieve(urn: string): { description: string; name: string; urn: string; vendor_urn: string; }`\n\n**get** `/v1/slas/{urn}`\n\nFetch in-depth information about a single SLA\n\n### Parameters\n\n- `urn: string`\n\n### Returns\n\n- `{ description: string; name: string; urn: string; vendor_urn: string; }`\n\n  - `description: string`\n  - `name: string`\n  - `urn: string`\n  - `vendor_urn: string`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst sla = await client.slas.retrieve('urn');\n\nconsole.log(sla);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.slas.retrieve',
         example:
-          'curl https://developer.clarative.ai/v1/slas/$URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst sla = await client.slas.retrieve('urn');\n\nconsole.log(sla.description);",
       },
       python: {
         method: 'slas.retrieve',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nsla = client.slas.retrieve(\n    "urn",\n)\nprint(sla.description)',
       },
-      typescript: {
-        method: 'client.slas.retrieve',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst sla = await client.slas.retrieve('urn');\n\nconsole.log(sla.description);",
+          'curl https://developer.clarative.ai/v1/slas/$URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -282,19 +282,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## get_uptime_metrics\n\n`client.slas.getUptimeMetrics(sla_urn: string, data_source_urn: string, end: string, start: string): { data_source_urn: string; downtime_events: object[]; metrics: object; metrics_deduplicated: object; sla_urn: string; timeframe: object; vendor_urn: string; }`\n\n**get** `/v1/slas/{sla_urn}/data-sources/{data_source_urn}/uptime-metrics`\n\nGet uptime metrics for an SLA data source\n\n### Parameters\n\n- `sla_urn: string`\n\n- `data_source_urn: string`\n\n- `end: string`\n  ISO-formatted datetime for the end of the evaluation period (e.g. 2024-01-31, 2024-01-31T23:59:59Z)\n\n- `start: string`\n  ISO-formatted datetime for the start of the evaluation period (e.g. 2024-01-01, 2024-01-15T08:00:00Z)\n\n### Returns\n\n- `{ data_source_urn: string; downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]; metrics: { downtime_hours: number; uptime_percentage: number; }; metrics_deduplicated: { downtime_hours: number; uptime_percentage: number; }; sla_urn: string; timeframe: { end: string; start: string; }; vendor_urn: string; }`\n\n  - `data_source_urn: string`\n  - `downtime_events: { duration_hours: number; end_time: string; name: string; start_time: string; }[]`\n  - `metrics: { downtime_hours: number; uptime_percentage: number; }`\n  - `metrics_deduplicated: { downtime_hours: number; uptime_percentage: number; }`\n  - `sla_urn: string`\n  - `timeframe: { end: string; start: string; }`\n  - `vendor_urn: string`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst response = await client.slas.getUptimeMetrics('data_source_urn', {\n  sla_urn: 'sla_urn',\n  end: '2019-12-27T18:11:19.117Z',\n  start: '2019-12-27T18:11:19.117Z',\n});\n\nconsole.log(response);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.slas.getUptimeMetrics',
         example:
-          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/data-sources/$DATA_SOURCE_URN/uptime-metrics \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.getUptimeMetrics('data_source_urn', {\n  sla_urn: 'sla_urn',\n  end: '2019-12-27T18:11:19.117Z',\n  start: '2019-12-27T18:11:19.117Z',\n});\n\nconsole.log(response.data_source_urn);",
       },
       python: {
         method: 'slas.get_uptime_metrics',
         example:
           'import os\nfrom datetime import datetime\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nresponse = client.slas.get_uptime_metrics(\n    data_source_urn="data_source_urn",\n    sla_urn="sla_urn",\n    end=datetime.fromisoformat("2019-12-27T18:11:19.117"),\n    start=datetime.fromisoformat("2019-12-27T18:11:19.117"),\n)\nprint(response.data_source_urn)',
       },
-      typescript: {
-        method: 'client.slas.getUptimeMetrics',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.slas.getUptimeMetrics('data_source_urn', {\n  sla_urn: 'sla_urn',\n  end: '2019-12-27T18:11:19.117Z',\n  start: '2019-12-27T18:11:19.117Z',\n});\n\nconsole.log(response.data_source_urn);",
+          'curl https://developer.clarative.ai/v1/slas/$SLA_URN/data-sources/$DATA_SOURCE_URN/uptime-metrics \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -311,19 +311,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.vendors.list(lifecycle_stage?: 'INITIAL_ASSESSMENT' | 'ONBOARDED'): { created_at: string; description: string; name: string; urn: string; }[]`\n\n**get** `/v1/vendors`\n\nList all vendors, sorted by name alphabetically (case-insensitive)\n\n### Parameters\n\n- `lifecycle_stage?: 'INITIAL_ASSESSMENT' | 'ONBOARDED'`\n  Filter vendors by lifecycle stage\n\n### Returns\n\n- `{ created_at: string; description: string; name: string; urn: string; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst vendors = await client.vendors.list();\n\nconsole.log(vendors);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.vendors.list',
         example:
-          'curl https://developer.clarative.ai/v1/vendors \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst vendors = await client.vendors.list();\n\nconsole.log(vendors);",
       },
       python: {
         method: 'vendors.list',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nvendors = client.vendors.list()\nprint(vendors)',
       },
-      typescript: {
-        method: 'client.vendors.list',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst vendors = await client.vendors.list();\n\nconsole.log(vendors);",
+          'curl https://developer.clarative.ai/v1/vendors \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
@@ -341,19 +341,19 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.vendors.retrieve(urn: string): { created_at: string; description: string; lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED'; name: string; urn: string; metadata?: object[]; }`\n\n**get** `/v1/vendors/{urn}`\n\nFetch in-depth information about a single vendor\n\n### Parameters\n\n- `urn: string`\n\n### Returns\n\n- `{ created_at: string; description: string; lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED'; name: string; urn: string; metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]; }`\n\n  - `created_at: string`\n  - `description: string`\n  - `lifecycle_stage: 'INITIAL_ASSESSMENT' | 'ONBOARDED'`\n  - `name: string`\n  - `urn: string`\n  - `metadata?: { name: string; type: 'TEXT' | 'SELECT' | 'MULTI_SELECT'; urn: string; value?: object; }[]`\n\n### Example\n\n```typescript\nimport Clarative from 'clarative';\n\nconst client = new Clarative();\n\nconst vendor = await client.vendors.retrieve('urn');\n\nconsole.log(vendor);\n```",
     perLanguage: {
-      http: {
+      typescript: {
+        method: 'client.vendors.retrieve',
         example:
-          'curl https://developer.clarative.ai/v1/vendors/$URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
+          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst vendor = await client.vendors.retrieve('urn');\n\nconsole.log(vendor.created_at);",
       },
       python: {
         method: 'vendors.retrieve',
         example:
           'import os\nfrom clarative import Clarative\n\nclient = Clarative(\n    api_key=os.environ.get("CLARATIVE_API_KEY"),  # This is the default and can be omitted\n)\nvendor = client.vendors.retrieve(\n    "urn",\n)\nprint(vendor.created_at)',
       },
-      typescript: {
-        method: 'client.vendors.retrieve',
+      http: {
         example:
-          "import Clarative from 'clarative';\n\nconst client = new Clarative({\n  apiKey: process.env['CLARATIVE_API_KEY'], // This is the default and can be omitted\n});\n\nconst vendor = await client.vendors.retrieve('urn');\n\nconsole.log(vendor.created_at);",
+          'curl https://developer.clarative.ai/v1/vendors/$URN \\\n    -H "Authorization: Bearer $CLARATIVE_API_KEY"',
       },
     },
   },
