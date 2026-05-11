@@ -124,6 +124,11 @@ export namespace RiskEventRetrieveResponse {
      * A unique identifier for the vendor
      */
     urn: string;
+
+    /**
+     * A list of domains associated with the vendor
+     */
+    domains?: Array<string>;
   }
 }
 

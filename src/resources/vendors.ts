@@ -51,6 +51,11 @@ export interface VendorRetrieveResponse {
   urn: string;
 
   /**
+   * A list of domains associated with the vendor
+   */
+  domains?: Array<string>;
+
+  /**
    * A list of custom metadata fields associated with the vendor
    */
   metadata?: Array<VendorRetrieveResponse.Metadata>;
@@ -103,6 +108,11 @@ export namespace VendorListResponse {
      * A unique identifier for the vendor
      */
     urn: string;
+
+    /**
+     * A list of domains associated with the vendor
+     */
+    domains?: Array<string>;
   }
 }
 
