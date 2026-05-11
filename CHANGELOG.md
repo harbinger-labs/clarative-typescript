@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.2.0 (2026-05-11)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/harbinger-labs/clarative-typescript/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* Add SLA tier details to developer API retrieve endpoint ([e1056b0](https://github.com/harbinger-labs/clarative-typescript/commit/e1056b02a2fe81e8703af57e95983f74f3da5c28))
+* Add vendor domains to developer API list and retrieve endpoints ([4726efa](https://github.com/harbinger-labs/clarative-typescript/commit/4726efa1f647681be04d12c7c481c6d710348e70))
+* support setting headers via env ([b3d2efb](https://github.com/harbinger-labs/clarative-typescript/commit/b3d2efb1ea236fe81c83d7f3f768458a16d16c9a))
+
+
+### Chores
+
+* avoid formatting file that gets changed during releases ([b4b6f41](https://github.com/harbinger-labs/clarative-typescript/commit/b4b6f4150b3df06260ce128ffa4f6bb3920934a6))
+* **format:** run eslint and prettier separately ([bf24c09](https://github.com/harbinger-labs/clarative-typescript/commit/bf24c091520012afd72a571ea5d7f484d5f633c1))
+* **internal:** codegen related update ([8bc5f3b](https://github.com/harbinger-labs/clarative-typescript/commit/8bc5f3b3ac926a0b8f1bd12f6f4aa6fd40841a65))
+* **internal:** codegen related update ([074c323](https://github.com/harbinger-labs/clarative-typescript/commit/074c323565e3ccf1601ae70f308f0263587e066d))
+* **internal:** more robust bootstrap script ([4786300](https://github.com/harbinger-labs/clarative-typescript/commit/4786300a290f0e1ce634a1073d773e398446f080))
+* **internal:** show error causes in MCP servers when running in local mode ([7c0c397](https://github.com/harbinger-labs/clarative-typescript/commit/7c0c397a93df9075b2e94745a03c93bafb69e2d4))
+* **mcp-server:** increase local docs search result count from 5 to 10 ([05b83a8](https://github.com/harbinger-labs/clarative-typescript/commit/05b83a8ddd5204ff956616afe1d4f739eedbfa84))
+* redact api-key headers in debug logs ([25c55b2](https://github.com/harbinger-labs/clarative-typescript/commit/25c55b2630711f14266448162eb46186adc9be19))
+* restructure docs search code ([ab439a6](https://github.com/harbinger-labs/clarative-typescript/commit/ab439a6845d8fd9744b739961df48b623634cd1e))
+* update SDK settings ([64d0088](https://github.com/harbinger-labs/clarative-typescript/commit/64d0088a609a9fe46e8ecc5729707526954d2c08))
+
 ## 0.1.0 (2026-04-08)
 
 Full Changelog: [v0.0.5...v0.1.0](https://github.com/harbinger-labs/clarative-typescript/compare/v0.0.5...v0.1.0)

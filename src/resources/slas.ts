@@ -89,6 +89,109 @@ export interface SlaRetrieveResponse {
    * A unique identifier for the vendor associated with the SLA
    */
   vendor_urn: string;
+
+  /**
+   * The SLA tier configuration details, including type and credit tiers. Null if the
+   * SLA does not have incident-based tier rules configured.
+   */
+  sla_details?: SlaRetrieveResponse.APIUptimeSlaDetails | SlaRetrieveResponse.APITimeUnderSlaDetails | null;
+}
+
+export namespace SlaRetrieveResponse {
+  export interface APIUptimeSlaDetails {
+    /**
+     * The duration unit of the measurement interval (e.g. DAY, MONTH, QUARTER, YEAR)
+     */
+    measurement_period_unit: string;
+
+    /**
+     * The number of measurement period units (e.g. 1 for a single calendar quarter)
+     */
+    measurement_period_value: number;
+
+    /**
+     * The credit tiers of the SLA, ordered by availability percentage
+     */
+    tiers: Array<APIUptimeSlaDetails.Tier>;
+
+    /**
+     * The type of SLA
+     */
+    sla_type?: 'UPTIME';
+  }
+
+  export namespace APIUptimeSlaDetails {
+    export interface Tier {
+      /**
+       * The availability percentage threshold for the tier, modeled as a float between 0
+       * and 1 (e.g. 0.999 is 99.9% availability)
+       */
+      availability_percentage: number;
+
+      /**
+       * The unit of the credit value (e.g. PERCENT or DAY)
+       */
+      credit_unit: string;
+
+      /**
+       * The credit value for the tier (e.g. 0.5 for 50% credit)
+       */
+      credit_value: number;
+    }
+  }
+
+  export interface APITimeUnderSlaDetails {
+    /**
+     * The duration unit of the measurement interval (e.g. MONTH, QUARTER)
+     */
+    measurement_period_unit: string;
+
+    /**
+     * The number of measurement period units (e.g. 1 for a single calendar quarter)
+     */
+    measurement_period_value: number;
+
+    /**
+     * The credit tiers of the SLA, ordered by availability percentage
+     */
+    tiers: Array<APITimeUnderSlaDetails.Tier>;
+
+    /**
+     * The type of SLA
+     */
+    sla_type?: 'TIME_UNDER';
+  }
+
+  export namespace APITimeUnderSlaDetails {
+    export interface Tier {
+      /**
+       * The availability percentage threshold for the tier, modeled as a float between 0
+       * and 1 (e.g. 0.999 is 99.9% availability)
+       */
+      availability_percentage: number;
+
+      /**
+       * The unit of the credit value (e.g. PERCENT, DAY, or HOUR)
+       */
+      credit_unit: string;
+
+      /**
+       * The credit value for the tier (e.g. 0.5 for 50% credit)
+       */
+      credit_value: number;
+
+      /**
+       * The 'per' unit for the time under calculation (e.g. PERCENT or HOUR)
+       */
+      per_unit: string;
+
+      /**
+       * The 'per' value for the time under calculation (e.g. 5% per each 1% below
+       * threshold)
+       */
+      per_value: number;
+    }
+  }
 }
 
 export type SlaListResponse = Array<SlaListResponse.SlaListResponseItem>;
@@ -624,6 +727,11 @@ export namespace SlaRetrieveViolationResponse {
      * A unique identifier for the vendor
      */
     urn: string;
+
+    /**
+     * A list of domains associated with the vendor
+     */
+    domains?: Array<string>;
   }
 }
 

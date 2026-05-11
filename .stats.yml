@@ -1,4 +1,4 @@
 configured_endpoints: 10
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/clarative%2Fclarative-7f1665780953d1891a3f1e1545d1b3e320603dbf0034778f71b98e462ec35aa0.yml
-openapi_spec_hash: 37b03eb4ab385de10ac23a43ed14c4be
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/clarative/clarative-13dcc9b43989480d0c87138f77ddcf8b137c19fa608d51c88d43dc6c7b6941db.yml
+openapi_spec_hash: 6b4c4acb967a6a7d1ab41857fc8da441
 config_hash: 722617720d47271287d5bb1863700987
