@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.1 (2026-05-19)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/harbinger-labs/clarative-typescript/compare/v0.2.0...v0.2.1)
+
+### Bug Fixes
+
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([9334af2](https://github.com/harbinger-labs/clarative-typescript/commit/9334af2961137cb9412bf2ea1bad2514bd9d6e8b))
+
+
+### Chores
+
+* **tests:** remove redundant File import ([5f08f6c](https://github.com/harbinger-labs/clarative-typescript/commit/5f08f6c56f8a4e5957cf2abe17fb1a780676f675))
+
 ## 0.2.0 (2026-05-11)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/harbinger-labs/clarative-typescript/compare/v0.1.0...v0.2.0)
